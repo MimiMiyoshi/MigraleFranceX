@@ -46,13 +46,13 @@ export default function Dashboard() {
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-neutral-800">Dashboard</h1>
-            <p className="text-neutral-600">Welcome back, {user?.fullName || 'User'}</p>
+            <h1 className="text-3xl font-bold text-neutral-800">マイページ</h1>
+            <p className="text-neutral-600">おかえりなさい、{user?.fullName || 'ユーザー'}さん</p>
           </div>
           
           <Link href="/questionnaire">
             <Button className="bg-primary hover:bg-primary/90">
-              Start New Questionnaire
+              新しい質問シートを始める
             </Button>
           </Link>
         </div>
@@ -60,8 +60,8 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Tasks Progress</CardTitle>
-              <CardDescription>Your visa application tasks</CardDescription>
+              <CardTitle className="text-lg">タスクの進捗状況</CardTitle>
+              <CardDescription>ビザ申請タスク</CardDescription>
             </CardHeader>
             <CardContent>
               {isLoadingTasks ? (
@@ -72,7 +72,7 @@ export default function Dashboard() {
                 <>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-neutral-600">
-                      {tasks.filter(task => task.isCompleted).length} of {tasks.length} completed
+                      {tasks.filter(task => task.isCompleted).length} / {tasks.length} 完了
                     </span>
                     <span className="text-sm font-medium">{getCompletedTasksPercentage()}%</span>
                   </div>
@@ -80,8 +80,8 @@ export default function Dashboard() {
                 </>
               ) : (
                 <div className="text-center py-4">
-                  <p className="text-neutral-600">No tasks yet</p>
-                  <p className="text-sm text-neutral-500">Complete the questionnaire to get started</p>
+                  <p className="text-neutral-600">タスクはまだありません</p>
+                  <p className="text-sm text-neutral-500">質問シートに回答して始めましょう</p>
                 </div>
               )}
             </CardContent>
@@ -89,8 +89,8 @@ export default function Dashboard() {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Recommended Visa</CardTitle>
-              <CardDescription>Based on your questionnaire</CardDescription>
+              <CardTitle className="text-lg">推奨ビザ</CardTitle>
+              <CardDescription>質問シートに基づく</CardDescription>
             </CardHeader>
             <CardContent>
               {isLoadingRecommendations ? (
@@ -100,7 +100,7 @@ export default function Dashboard() {
               ) : recommendations && recommendations.length > 0 && visaTypes ? (
                 <div>
                   <p className="font-medium text-neutral-800">
-                    {getVisaTypeById(recommendations[0].visaTypeId)?.name || 'None yet'}
+                    {getVisaTypeById(recommendations[0].visaTypeId)?.name || 'まだありません'}
                   </p>
                   <p className="text-sm text-neutral-600 mt-1">
                     {getVisaTypeById(recommendations[0].visaTypeId)?.description || ''}
@@ -108,8 +108,8 @@ export default function Dashboard() {
                 </div>
               ) : (
                 <div className="text-center py-4">
-                  <p className="text-neutral-600">No recommendations yet</p>
-                  <p className="text-sm text-neutral-500">Complete the questionnaire to get recommendations</p>
+                  <p className="text-neutral-600">推奨はまだありません</p>
+                  <p className="text-sm text-neutral-500">質問シートに回答して推奨を取得しましょう</p>
                 </div>
               )}
             </CardContent>
@@ -117,8 +117,8 @@ export default function Dashboard() {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Next Steps</CardTitle>
-              <CardDescription>Your upcoming tasks</CardDescription>
+              <CardTitle className="text-lg">次のステップ</CardTitle>
+              <CardDescription>今後のタスク</CardDescription>
             </CardHeader>
             <CardContent>
               {isLoadingTasks ? (
@@ -138,14 +138,14 @@ export default function Dashboard() {
                   </p>
                   <Link href="/tasks">
                     <Button variant="outline" size="sm" className="w-full">
-                      View All Tasks
+                      すべてのタスクを表示
                     </Button>
                   </Link>
                 </div>
               ) : (
                 <div className="text-center py-4">
-                  <p className="text-neutral-600">All tasks completed!</p>
-                  <p className="text-sm text-neutral-500">Great job! You're on your way to France</p>
+                  <p className="text-neutral-600">すべてのタスクが完了しました！</p>
+                  <p className="text-sm text-neutral-500">素晴らしい！フランスへの道が開けています</p>
                 </div>
               )}
             </CardContent>
@@ -154,9 +154,9 @@ export default function Dashboard() {
         
         <Tabs defaultValue="tasks" className="w-full">
           <TabsList className="mb-6">
-            <TabsTrigger value="tasks">Tasks</TabsTrigger>
-            <TabsTrigger value="documents">Documents</TabsTrigger>
-            <TabsTrigger value="timeline">Timeline</TabsTrigger>
+            <TabsTrigger value="tasks">タスク</TabsTrigger>
+            <TabsTrigger value="documents">必要書類</TabsTrigger>
+            <TabsTrigger value="timeline">タイムライン</TabsTrigger>
           </TabsList>
           
           <TabsContent value="tasks">
@@ -165,7 +165,7 @@ export default function Dashboard() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <ClipboardList className="h-5 w-5 mr-2 text-primary" />
-                    To Do
+                    未完了
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -186,7 +186,7 @@ export default function Dashboard() {
                               <p className="text-sm text-neutral-600">{task.description}</p>
                               {task.dueDate && (
                                 <p className="text-xs text-neutral-500 mt-1">
-                                  Due by: {new Date(task.dueDate).toLocaleDateString()}
+                                  期限: {new Date(task.dueDate).toLocaleDateString()}
                                 </p>
                               )}
                             </div>
@@ -195,14 +195,14 @@ export default function Dashboard() {
                       {tasks.filter(task => !task.isCompleted).length > 3 && (
                         <Link href="/tasks">
                           <Button variant="ghost" className="w-full flex items-center justify-center mt-2">
-                            View All <ArrowRight className="ml-2 h-4 w-4" />
+                            すべて表示 <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                         </Link>
                       )}
                     </div>
                   ) : (
                     <div className="text-center py-6">
-                      <p className="text-neutral-600">No pending tasks</p>
+                      <p className="text-neutral-600">未完了のタスクはありません</p>
                     </div>
                   )}
                 </CardContent>
@@ -212,7 +212,7 @@ export default function Dashboard() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <CheckCircle className="h-5 w-5 mr-2 text-green-500" />
-                    Completed
+                    完了済み
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -235,7 +235,7 @@ export default function Dashboard() {
                               <p className="text-sm text-neutral-500">{task.description}</p>
                               {task.dueDate && (
                                 <p className="text-xs text-neutral-500 mt-1">
-                                  Completed on: {new Date(task.updatedAt).toLocaleDateString()}
+                                  完了日: {new Date(task.updatedAt).toLocaleDateString()}
                                 </p>
                               )}
                             </div>
@@ -244,14 +244,14 @@ export default function Dashboard() {
                       {tasks.filter(task => task.isCompleted).length > 3 && (
                         <Link href="/tasks">
                           <Button variant="ghost" className="w-full flex items-center justify-center mt-2">
-                            View All <ArrowRight className="ml-2 h-4 w-4" />
+                            すべて表示 <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                         </Link>
                       )}
                     </div>
                   ) : (
                     <div className="text-center py-6">
-                      <p className="text-neutral-600">No completed tasks</p>
+                      <p className="text-neutral-600">完了したタスクはありません</p>
                     </div>
                   )}
                 </CardContent>
@@ -262,16 +262,16 @@ export default function Dashboard() {
           <TabsContent value="documents">
             <Card>
               <CardHeader>
-                <CardTitle>Required Documents</CardTitle>
+                <CardTitle>必要書類</CardTitle>
                 <CardDescription>
-                  Documents you'll need for your visa application
+                  ビザ申請に必要な書類
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-12">
-                  <p className="text-neutral-600">Document section coming soon</p>
+                  <p className="text-neutral-600">書類セクションは近日公開予定です</p>
                   <p className="text-sm text-neutral-500 mt-2">
-                    We're working on adding document management features
+                    書類管理機能の追加に取り組んでいます
                   </p>
                 </div>
               </CardContent>
@@ -281,16 +281,16 @@ export default function Dashboard() {
           <TabsContent value="timeline">
             <Card>
               <CardHeader>
-                <CardTitle>Application Timeline</CardTitle>
+                <CardTitle>申請タイムライン</CardTitle>
                 <CardDescription>
-                  Track your visa application process
+                  ビザ申請プロセスの追跡
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-12">
-                  <p className="text-neutral-600">Timeline section coming soon</p>
+                  <p className="text-neutral-600">タイムラインセクションは近日公開予定です</p>
                   <p className="text-sm text-neutral-500 mt-2">
-                    We're working on adding timeline visualization features
+                    タイムライン可視化機能の追加に取り組んでいます
                   </p>
                 </div>
               </CardContent>

@@ -152,8 +152,8 @@ export default function Questionnaire() {
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-3xl mx-auto">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-neutral-800">Visa Questionnaire</h1>
-            <p className="text-neutral-600">Answer these questions to get a personalized visa recommendation</p>
+            <h1 className="text-3xl font-bold text-neutral-800">ビザ質問シート</h1>
+            <p className="text-neutral-600">質問に答えて、あなたに合ったビザの推奨を受け取りましょう</p>
           </div>
           
           {isLoading ? (
@@ -165,38 +165,38 @@ export default function Questionnaire() {
               <CardHeader>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-6 w-6 text-green-500" />
-                  <CardTitle>Questionnaire Completed</CardTitle>
+                  <CardTitle>質問シート完了</CardTitle>
                 </div>
                 <CardDescription>
-                  Based on your answers, we have a recommendation for you.
+                  あなたの回答に基づいて、推奨ビザをご提案します。
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="bg-primary/10 p-4 rounded-lg">
-                  <h3 className="text-lg font-medium text-primary mb-2">Recommended Visa</h3>
+                  <h3 className="text-lg font-medium text-primary mb-2">推奨ビザ</h3>
                   {getRecommendedVisa() ? (
                     <>
                       <p className="text-xl font-bold text-neutral-800">{getRecommendedVisa()?.name}</p>
                       <p className="text-neutral-600 mt-1">{getRecommendedVisa()?.description}</p>
                       
                       <div className="mt-4">
-                        <h4 className="text-sm font-medium text-neutral-800 mb-2">Requirements:</h4>
+                        <h4 className="text-sm font-medium text-neutral-800 mb-2">必要条件：</h4>
                         <p className="text-sm text-neutral-600">{getRecommendedVisa()?.requirements}</p>
                       </div>
                     </>
                   ) : (
-                    <p className="text-neutral-600">Loading recommendation...</p>
+                    <p className="text-neutral-600">推奨を読み込み中...</p>
                   )}
                 </div>
                 
                 <div className="bg-neutral-100 p-4 rounded-lg">
                   <div className="flex items-center space-x-2 mb-2">
                     <HelpCircle className="h-5 w-5 text-neutral-600" />
-                    <h3 className="text-lg font-medium text-neutral-800">Next Steps</h3>
+                    <h3 className="text-lg font-medium text-neutral-800">次のステップ</h3>
                   </div>
                   <p className="text-neutral-600">
-                    We've created a personalized task list to help you prepare for your visa application.
-                    Visit your dashboard to view and manage these tasks.
+                    ビザ申請の準備をサポートするためのパーソナライズされたタスクリストを作成しました。
+                    マイページでこれらのタスクを確認・管理してください。
                   </p>
                 </div>
               </CardContent>
@@ -205,16 +205,16 @@ export default function Questionnaire() {
                   onClick={handleFinish} 
                   className="w-full bg-primary hover:bg-primary/90"
                 >
-                  Go to Dashboard
+                  マイページへ
                 </Button>
               </CardFooter>
             </Card>
           ) : (
             <Card>
               <CardHeader>
-                <CardTitle>{currentQuestionQuery.data?.text || 'Loading question...'}</CardTitle>
+                <CardTitle>{currentQuestionQuery.data?.text || '質問を読み込み中...'}</CardTitle>
                 <CardDescription>
-                  {currentQuestionQuery.data?.category} • Question {answers.length + 1}
+                  {currentQuestionQuery.data?.category} • 質問 {answers.length + 1}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -244,7 +244,7 @@ export default function Questionnaire() {
                     ))}
                   </RadioGroup>
                 ) : (
-                  <p className="text-neutral-600">Loading options...</p>
+                  <p className="text-neutral-600">選択肢を読み込み中...</p>
                 )}
               </CardContent>
               <CardFooter className="flex justify-between">
@@ -255,14 +255,14 @@ export default function Questionnaire() {
                   className="flex items-center"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back
+                  戻る
                 </Button>
                 <Button 
                   onClick={handleNext}
                   disabled={!selectedOption}
                   className="bg-primary hover:bg-primary/90 flex items-center"
                 >
-                  Next
+                  次へ
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardFooter>
