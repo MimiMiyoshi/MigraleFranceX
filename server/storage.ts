@@ -41,7 +41,7 @@ export interface IStorage {
   getRecommendationsByUserId(userId: number): Promise<Recommendation[]>;
   createRecommendation(recommendation: InsertRecommendation): Promise<Recommendation>;
   
-  sessionStore: session.SessionStore;
+  sessionStore: any;
 }
 
 // Implement the in-memory storage
