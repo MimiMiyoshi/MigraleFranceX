@@ -17,18 +17,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/questions/:id", async (req, res) => {
-    try {
-      const question = await storage.getQuestion(parseInt(req.params.id));
-      if (!question) {
-        return res.status(404).json({ message: "Question not found" });
-      }
-      res.json(question);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch question" });
-    }
-  });
-
   app.get("/api/questions/root", async (req, res) => {
     try {
       const rootQuestion = await storage.getRootQuestion();
@@ -38,6 +26,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(rootQuestion);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch root question" });
+    }
+  });
+
+  app.get("/api/questions/:id", async (req, res) => {
+    try {
+      const question = await storage.getQuestion(parseInt(req.params.id));
+      if (!question) {
+        return res.status(404).json({ message: "Question not found" });
+      }
+      res.json(question);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch question" });
     }
   });
 
