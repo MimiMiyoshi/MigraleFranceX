@@ -9,7 +9,7 @@ import { useAuth } from "@/hooks/use-auth";
 
 // Define form schema using zod
 const formSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  email: z.string().email("有効なメールアドレスを入力してください"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -35,8 +35,8 @@ export function ResetPasswordForm({ onBackToLogin }: { onBackToLogin: () => void
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h2 className="text-xl font-bold text-neutral-800 mb-2">Reset Your Password</h2>
-        <p className="text-neutral-600">Enter your email to receive password reset instructions</p>
+        <h2 className="text-xl font-bold text-neutral-800 mb-2">パスワードのリセット</h2>
+        <p className="text-neutral-600">メールアドレスを入力してパスワードリセットの手順を受け取ってください</p>
       </div>
       
       <Form {...form}>
@@ -46,11 +46,11 @@ export function ResetPasswordForm({ onBackToLogin }: { onBackToLogin: () => void
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-neutral-700">Email Address</FormLabel>
+                <FormLabel className="text-neutral-700">メールアドレス</FormLabel>
                 <FormControl>
                   <Input 
                     type="email"
-                    placeholder="your.email@example.com" 
+                    placeholder="example@mail.com" 
                     {...field} 
                     className="px-3 py-2 border border-neutral-300 rounded-md"
                   />
@@ -68,10 +68,10 @@ export function ResetPasswordForm({ onBackToLogin }: { onBackToLogin: () => void
             {resetPasswordMutation.isPending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Sending...
+                送信中...
               </>
             ) : (
-              "Send Reset Link"
+              "リセットリンクを送信"
             )}
           </Button>
         </form>
@@ -83,7 +83,7 @@ export function ResetPasswordForm({ onBackToLogin }: { onBackToLogin: () => void
           variant="link" 
           className="text-sm text-primary hover:text-primary/90"
         >
-          Back to Sign In
+          ログイン画面に戻る
         </Button>
       </div>
     </div>

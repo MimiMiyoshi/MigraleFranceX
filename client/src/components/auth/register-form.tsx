@@ -11,19 +11,19 @@ import { insertUserSchema } from "@shared/schema";
 
 // Define form schema using zod
 const formSchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  username: z.string().min(3, "Username must be at least 3 characters"),
+  fullName: z.string().min(2, "お名前は2文字以上で入力してください"),
+  email: z.string().email("有効なメールアドレスを入力してください"),
+  username: z.string().min(3, "ユーザー名は3文字以上で入力してください"),
   password: z.string()
-    .min(8, "Password must be at least 8 characters")
-    .regex(/[0-9]/, "Password must contain at least one number")
-    .regex(/[^a-zA-Z0-9]/, "Password must contain at least one special character"),
+    .min(8, "パスワードは8文字以上で入力してください")
+    .regex(/[0-9]/, "パスワードには少なくとも1つの数字を含める必要があります")
+    .regex(/[^a-zA-Z0-9]/, "パスワードには少なくとも1つの特殊文字を含める必要があります"),
   confirmPassword: z.string(),
   terms: z.boolean().refine(val => val === true, {
-    message: "You must accept the terms and conditions",
+    message: "利用規約に同意する必要があります",
   }),
 }).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords do not match",
+  message: "パスワードが一致しません",
   path: ["confirmPassword"],
 });
 
@@ -53,8 +53,8 @@ export function RegisterForm() {
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h2 className="text-xl font-bold text-neutral-800 mb-2">Create Your Account</h2>
-        <p className="text-neutral-600">Sign up to start your France immigration journey</p>
+        <h2 className="text-xl font-bold text-neutral-800 mb-2">アカウント作成</h2>
+        <p className="text-neutral-600">登録してフランス移住の旅を始めましょう</p>
       </div>
       
       <Form {...form}>
@@ -64,10 +64,10 @@ export function RegisterForm() {
             name="fullName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-neutral-700">Full Name</FormLabel>
+                <FormLabel className="text-neutral-700">お名前</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="John Doe" 
+                    placeholder="山田 太郎" 
                     {...field} 
                     className="px-3 py-2 border border-neutral-300 rounded-md"
                   />
@@ -82,11 +82,11 @@ export function RegisterForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-neutral-700">Email Address</FormLabel>
+                <FormLabel className="text-neutral-700">メールアドレス</FormLabel>
                 <FormControl>
                   <Input 
                     type="email"
-                    placeholder="your.email@example.com" 
+                    placeholder="example@mail.com" 
                     {...field} 
                     className="px-3 py-2 border border-neutral-300 rounded-md"
                   />
@@ -101,10 +101,10 @@ export function RegisterForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-neutral-700">Username</FormLabel>
+                <FormLabel className="text-neutral-700">ユーザー名</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="johndoe" 
+                    placeholder="yamada_taro" 
                     {...field} 
                     className="px-3 py-2 border border-neutral-300 rounded-md"
                   />
@@ -119,7 +119,7 @@ export function RegisterForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-neutral-700">Password</FormLabel>
+                <FormLabel className="text-neutral-700">パスワード</FormLabel>
                 <FormControl>
                   <Input 
                     type="password" 
@@ -128,7 +128,7 @@ export function RegisterForm() {
                     className="px-3 py-2 border border-neutral-300 rounded-md"
                   />
                 </FormControl>
-                <p className="mt-1 text-xs text-neutral-500">Must be at least 8 characters with at least one number and one special character</p>
+                <p className="mt-1 text-xs text-neutral-500">8文字以上で、少なくとも1つの数字と1つの特殊文字を含める必要があります</p>
                 <FormMessage />
               </FormItem>
             )}
@@ -139,7 +139,7 @@ export function RegisterForm() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-neutral-700">Confirm Password</FormLabel>
+                <FormLabel className="text-neutral-700">パスワード（確認）</FormLabel>
                 <FormControl>
                   <Input 
                     type="password" 
@@ -168,7 +168,7 @@ export function RegisterForm() {
                 </FormControl>
                 <div className="space-y-1">
                   <FormLabel htmlFor="terms" className="text-sm text-neutral-700 cursor-pointer">
-                    I agree to the <a href="#" className="text-primary hover:text-primary/90">Terms of Service</a> and <a href="#" className="text-primary hover:text-primary/90">Privacy Policy</a>
+                    <a href="#" className="text-primary hover:text-primary/90">利用規約</a>と<a href="#" className="text-primary hover:text-primary/90">プライバシーポリシー</a>に同意します
                   </FormLabel>
                   <FormMessage />
                 </div>
@@ -184,10 +184,10 @@ export function RegisterForm() {
             {registerMutation.isPending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Creating Account...
+                アカウント作成中...
               </>
             ) : (
-              "Create Account"
+              "アカウント作成"
             )}
           </Button>
         </form>
@@ -199,7 +199,7 @@ export function RegisterForm() {
             <div className="w-full border-t border-neutral-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-neutral-500">Or continue with</span>
+            <span className="px-2 bg-white text-neutral-500">または</span>
           </div>
         </div>
         

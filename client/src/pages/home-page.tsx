@@ -19,22 +19,22 @@ export default function HomePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-neutral-800 mb-6">
-                Simplify Your Move to France
+                フランス移住を簡単に
               </h1>
               <p className="text-xl text-neutral-600 mb-8">
-                From visa applications to settling in, we guide you through every step of relocating to France.
+                ビザ申請から現地での生活まで、フランス移住の全ステップをサポートします。
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 {user ? (
                   <>
                     <Link href="/dashboard">
                       <Button size="lg" className="text-white bg-primary hover:bg-primary/90">
-                        Go to Dashboard
+                        マイページへ
                       </Button>
                     </Link>
                     <Link href="/questionnaire">
                       <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                        Start Questionnaire
+                        質問シートを始める
                       </Button>
                     </Link>
                   </>
@@ -42,12 +42,12 @@ export default function HomePage() {
                   <>
                     <Link href="/auth">
                       <Button size="lg" className="text-white bg-primary hover:bg-primary/90">
-                        Get Started
+                        今すぐ始める
                       </Button>
                     </Link>
                     <Link href="/auth">
                       <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                        Learn More
+                        詳しく見る
                       </Button>
                     </Link>
                   </>

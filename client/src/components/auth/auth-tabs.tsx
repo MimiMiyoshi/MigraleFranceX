@@ -21,7 +21,7 @@ export function AuthTabs() {
           }`}
           onClick={showLoginTab}
         >
-          Sign In
+          ログイン
         </button>
         <button 
           className={`flex-1 py-3 text-center font-medium ${
@@ -31,7 +31,7 @@ export function AuthTabs() {
           }`}
           onClick={showRegisterTab}
         >
-          Register
+          新規登録
         </button>
       </div>
       

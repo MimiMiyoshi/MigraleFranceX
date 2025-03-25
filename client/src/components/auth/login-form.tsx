@@ -41,8 +41,8 @@ export function LoginForm({ onShowReset }: { onShowReset: () => void }) {
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h2 className="text-xl font-bold text-neutral-800 mb-2">Welcome Back</h2>
-        <p className="text-neutral-600">Enter your email and password to access your account.</p>
+        <h2 className="text-xl font-bold text-neutral-800 mb-2">おかえりなさい</h2>
+        <p className="text-neutral-600">ユーザー名とパスワードを入力してアカウントにアクセスしてください。</p>
       </div>
       
       <Form {...form}>
@@ -52,10 +52,10 @@ export function LoginForm({ onShowReset }: { onShowReset: () => void }) {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-neutral-700">Username</FormLabel>
+                <FormLabel className="text-neutral-700">ユーザー名</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="your.username" 
+                    placeholder="ユーザー名" 
                     {...field} 
                     className="px-3 py-2 border border-neutral-300 rounded-md"
                   />
@@ -71,14 +71,14 @@ export function LoginForm({ onShowReset }: { onShowReset: () => void }) {
             render={({ field }) => (
               <FormItem>
                 <div className="flex items-center justify-between mb-1">
-                  <FormLabel className="text-neutral-700">Password</FormLabel>
+                  <FormLabel className="text-neutral-700">パスワード</FormLabel>
                   <Button 
                     type="button" 
                     variant="link" 
                     onClick={onShowReset}
                     className="text-sm p-0 h-auto text-primary hover:text-primary/90"
                   >
-                    Forgot password?
+                    パスワードをお忘れですか？
                   </Button>
                 </div>
                 <FormControl>
@@ -108,7 +108,7 @@ export function LoginForm({ onShowReset }: { onShowReset: () => void }) {
                   />
                 </FormControl>
                 <FormLabel htmlFor="remember-me" className="text-sm text-neutral-700 cursor-pointer">
-                  Remember me
+                  ログイン状態を保持する
                 </FormLabel>
               </FormItem>
             )}
@@ -122,10 +122,10 @@ export function LoginForm({ onShowReset }: { onShowReset: () => void }) {
             {loginMutation.isPending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Signing in...
+                ログイン中...
               </>
             ) : (
-              "Sign In"
+              "ログイン"
             )}
           </Button>
         </form>
@@ -137,7 +137,7 @@ export function LoginForm({ onShowReset }: { onShowReset: () => void }) {
             <div className="w-full border-t border-neutral-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-neutral-500">Or continue with</span>
+            <span className="px-2 bg-white text-neutral-500">または</span>
           </div>
         </div>
         

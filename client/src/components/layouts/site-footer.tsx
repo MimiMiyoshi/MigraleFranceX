@@ -6,8 +6,8 @@ export function SiteFooter() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold text-neutral-800 mb-4">Vivre en France</h3>
-            <p className="text-neutral-600 mb-4">Helping you navigate your journey to living in France with ease.</p>
+            <h3 className="text-lg font-semibold text-neutral-800 mb-4">フランス生活ナビ</h3>
+            <p className="text-neutral-600 mb-4">フランスでの生活をより簡単に始められるようサポートします。</p>
             <div className="flex space-x-4">
               <a href="#" className="text-neutral-500 hover:text-primary">
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -28,40 +28,40 @@ export function SiteFooter() {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold text-neutral-800 mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-neutral-800 mb-4">クイックリンク</h3>
             <ul className="space-y-2">
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">About Us</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Features</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">How It Works</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Testimonials</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Contact</a></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">サービス概要</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">サービス内容</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">ご利用の流れ</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">お客様の声</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">お問い合わせ</span></Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold text-neutral-800 mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold text-neutral-800 mb-4">お役立ち情報</h3>
             <ul className="space-y-2">
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Visa Information</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Housing Guide</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Language Schools</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Job Opportunities</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">FAQs</a></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">ビザ情報</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">住居ガイド</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">語学学校</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">求人情報</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">よくある質問</span></Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold text-neutral-800 mb-4">Legal</h3>
+            <h3 className="text-lg font-semibold text-neutral-800 mb-4">法的情報</h3>
             <ul className="space-y-2">
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Terms of Service</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Privacy Policy</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Cookie Policy</a></Link></li>
-              <li><Link href="/"><a className="text-neutral-600 hover:text-primary">Data Protection</a></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">利用規約</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">プライバシーポリシー</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">Cookieポリシー</span></Link></li>
+              <li><Link href="/"><span className="text-neutral-600 hover:text-primary">データ保護方針</span></Link></li>
             </ul>
           </div>
         </div>
         
         <div className="mt-8 pt-8 border-t border-neutral-200 text-center">
-          <p className="text-neutral-600">© {new Date().getFullYear()} Vivre en France. All rights reserved.</p>
+          <p className="text-neutral-600">© {new Date().getFullYear()} フランス生活ナビ. All rights reserved.</p>
         </div>
       </div>
     </footer>
