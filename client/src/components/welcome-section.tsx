@@ -77,8 +77,8 @@ export function WelcomeSection() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold">佐藤 美咲</h3>
-                <p className="text-sm opacity-80">学生ビザ、2023年渡仏</p>
+                <h3 className="text-lg font-semibold">ユーザーの声</h3>
+                <p className="text-sm opacity-80">学生ビザ利用者</p>
               </div>
             </div>
             <blockquote>
