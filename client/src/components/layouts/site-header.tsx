@@ -20,41 +20,58 @@ export function SiteHeader() {
     <header className="bg-white border-b border-neutral-200 sticky top-0 z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <div className="flex-shrink-0 flex items-center">
-              <svg className="h-8 w-auto text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          {/* Logo and site name */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/" className="flex items-center">
+              <svg 
+                className="h-7 w-7 text-primary" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M12 2L20 7V17L12 22L4 17V7L12 2Z" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
               </svg>
-              <Link href="/">
-                <span className="ml-3 text-xl font-bold text-primary">フランス生活ナビ</span>
-              </Link>
-            </div>
+              <span className="ml-2.5 text-lg font-bold text-primary">フランス生活ナビ</span>
+            </Link>
           </div>
           
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
             <Link href="/">
-              <span className="text-neutral-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">サービス紹介</span>
+              <span className="text-neutral-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+                サービス紹介
+              </span>
             </Link>
             <Link href="/questionnaire">
-              <span className="text-neutral-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">質問シート</span>
+              <span className="text-neutral-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+                質問シート
+              </span>
             </Link>
             <Link href="/">
-              <span className="text-neutral-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">お問い合わせ</span>
+              <span className="text-neutral-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+                お問い合わせ
+              </span>
             </Link>
-          </div>
+          </nav>
           
-          <div className="hidden md:flex">
+          {/* Desktop authentication */}
+          <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <>
                 <Link href="/dashboard">
-                  <span className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary bg-white hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                  <Button variant="ghost" className="text-primary">
                     マイページ
-                  </span>
+                  </Button>
                 </Link>
                 <Button 
                   onClick={handleLogout}
                   variant="outline" 
-                  className="ml-4"
                   disabled={logoutMutation.isPending}
                 >
                   {logoutMutation.isPending ? "ログアウト中..." : "ログアウト"}
@@ -63,24 +80,26 @@ export function SiteHeader() {
             ) : (
               <>
                 <Link href="/auth">
-                  <span className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary bg-white hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                  <Button variant="ghost" className="text-primary">
                     ログイン
-                  </span>
+                  </Button>
                 </Link>
                 <Link href="/auth">
-                  <span className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                  <Button className="bg-primary hover:bg-primary/90">
                     新規登録
-                  </span>
+                  </Button>
                 </Link>
               </>
             )}
           </div>
           
+          {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button
               type="button"
-              className="text-neutral-500 hover:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+              className="text-neutral-500 hover:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary p-1 rounded-md"
               onClick={toggleMobileMenu}
+              aria-label={mobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}
             >
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -94,37 +113,43 @@ export function SiteHeader() {
       
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden bg-white border-b border-neutral-200 shadow-sm">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link href="/">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)}>
               <span className="block px-3 py-2 rounded-md text-base font-medium text-neutral-600 hover:text-primary hover:bg-neutral-50">
                 サービス紹介
               </span>
             </Link>
-            <Link href="/questionnaire">
+            <Link href="/questionnaire" onClick={() => setMobileMenuOpen(false)}>
               <span className="block px-3 py-2 rounded-md text-base font-medium text-neutral-600 hover:text-primary hover:bg-neutral-50">
                 質問シート
               </span>
             </Link>
-            <Link href="/">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)}>
               <span className="block px-3 py-2 rounded-md text-base font-medium text-neutral-600 hover:text-primary hover:bg-neutral-50">
                 お問い合わせ
               </span>
             </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-neutral-200">
-            <div className="flex items-center px-5">
+            <div className="flex flex-col px-5 space-y-3">
               {user ? (
                 <>
-                  <Link href="/dashboard">
-                    <span className="block w-full text-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary bg-white hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                    <Button 
+                      variant="ghost" 
+                      className="w-full justify-start text-primary"
+                    >
                       マイページ
-                    </span>
+                    </Button>
                   </Link>
                   <Button 
-                    onClick={handleLogout}
+                    onClick={() => {
+                      handleLogout();
+                      setMobileMenuOpen(false);
+                    }}
                     variant="outline" 
-                    className="ml-4 w-full"
+                    className="w-full justify-start"
                     disabled={logoutMutation.isPending}
                   >
                     {logoutMutation.isPending ? "ログアウト中..." : "ログアウト"}
@@ -132,15 +157,28 @@ export function SiteHeader() {
                 </>
               ) : (
                 <>
-                  <Link href="/auth">
-                    <span className="block w-full text-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary bg-white hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                  <Link 
+                    href="/auth" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full"
+                  >
+                    <Button 
+                      variant="ghost" 
+                      className="w-full justify-center text-primary"
+                    >
                       ログイン
-                    </span>
+                    </Button>
                   </Link>
-                  <Link href="/auth">
-                    <span className="ml-4 block w-full text-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                  <Link 
+                    href="/auth" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full"
+                  >
+                    <Button 
+                      className="w-full justify-center bg-primary hover:bg-primary/90"
+                    >
                       新規登録
-                    </span>
+                    </Button>
                   </Link>
                 </>
               )}
