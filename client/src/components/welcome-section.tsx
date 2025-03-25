@@ -65,27 +65,6 @@ export function WelcomeSection() {
             </Link>
           </div>
         </div>
-        
-        <div className="relative bg-primary text-white py-8 px-6 md:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center mb-6">
-              <div className="flex-shrink-0">
-                <div className="h-10 w-10 rounded-full bg-white text-primary flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="ml-4">
-                <h3 className="text-lg font-semibold">ユーザーの声</h3>
-                <p className="text-sm opacity-80">学生ビザ利用者</p>
-              </div>
-            </div>
-            <blockquote>
-              <p className="text-lg">「このアプリのおかげでフランスへの移住がとても楽になりました！ビザの質問シートは何時間もの調査時間を節約でき、タスクチェックリストのおかげで申請プロセス全体を通して整理することができました。」</p>
-            </blockquote>
-          </div>
-        </div>
       </div>
     </div>
   );
