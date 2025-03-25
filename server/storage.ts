@@ -249,61 +249,61 @@ export class MemStorage implements IStorage {
   private async initializeData() {
     // Create visa types
     const touristVisa = await this.createVisaType({
-      name: "Tourist Visa (Short Stay)",
-      description: "For stays less than 90 days without work purposes",
-      requirements: "Valid passport, return ticket, proof of accommodation, travel insurance"
+      name: "観光ビザ（短期滞在）",
+      description: "就労目的のない90日未満の滞在のためのビザ",
+      requirements: "有効なパスポート、往復航空券、宿泊施設の証明、旅行保険"
     });
 
     const studentVisa = await this.createVisaType({
-      name: "Student Visa (Long Stay)",
-      description: "For studies in France lasting more than 90 days",
-      requirements: "Acceptance letter from French institution, proof of financial means, housing"
+      name: "学生ビザ（長期滞在）",
+      description: "90日以上のフランスでの勉学を目的としたビザ",
+      requirements: "フランスの教育機関からの入学許可証、資金証明、住居証明"
     });
 
     const workVisa = await this.createVisaType({
-      name: "Work Visa (Long Stay)",
-      description: "For employment in France lasting more than 90 days",
-      requirements: "Work contract, employer sponsorship, qualification documents"
+      name: "就労ビザ（長期滞在）",
+      description: "90日以上のフランスでの就労を目的としたビザ",
+      requirements: "雇用契約書、雇用主からの推薦状、資格証明書"
     });
 
     const workingHolidayVisa = await this.createVisaType({
-      name: "Working Holiday Visa",
-      description: "For young adults (18-30) to travel and work temporarily",
-      requirements: "Valid passport, return ticket, proof of funds, under 30 years old"
+      name: "ワーキングホリデービザ",
+      description: "若年層（18〜30歳）の旅行と一時的な就労のためのビザ",
+      requirements: "有効なパスポート、往復航空券、資金証明、30歳未満であること"
     });
 
     // Create questions
     const q1 = await this.createQuestion({
-      text: "How long do you plan to stay in France?",
-      category: "Duration",
+      text: "フランスでの滞在予定期間はどのくらいですか？",
+      category: "滞在期間",
       isRoot: true,
       nextQuestionId: null
     });
 
     const q2 = await this.createQuestion({
-      text: "What is the primary purpose of your stay?",
-      category: "Purpose",
+      text: "フランス滞在の主な目的は何ですか？",
+      category: "目的",
       isRoot: false,
       nextQuestionId: null
     });
 
     const q3 = await this.createQuestion({
-      text: "Are you planning to work during your stay in France?",
-      category: "Work",
+      text: "フランス滞在中に働く予定はありますか？",
+      category: "就労",
       isRoot: false,
       nextQuestionId: null
     });
 
     const q4 = await this.createQuestion({
-      text: "Are you enrolled or planning to enroll in a French educational institution?",
-      category: "Education",
+      text: "フランスの教育機関に在籍している、または入学予定ですか？",
+      category: "教育",
       isRoot: false,
       nextQuestionId: null
     });
 
     const q5 = await this.createQuestion({
-      text: "What is your age group?",
-      category: "Personal",
+      text: "あなたの年齢層を教えてください",
+      category: "個人情報",
       isRoot: false,
       nextQuestionId: null
     });
@@ -311,103 +311,103 @@ export class MemStorage implements IStorage {
     // Create answer options
     await this.createAnswerOption({
       questionId: q1.id,
-      text: "Less than 90 days",
+      text: "90日未満",
       nextQuestionId: q2.id
     });
 
     await this.createAnswerOption({
       questionId: q1.id,
-      text: "90 days to 1 year",
+      text: "90日〜1年",
       nextQuestionId: q2.id
     });
 
     await this.createAnswerOption({
       questionId: q1.id,
-      text: "More than 1 year",
+      text: "1年以上",
       nextQuestionId: q2.id
     });
 
     await this.createAnswerOption({
       questionId: q2.id,
-      text: "Tourism/Visiting",
+      text: "観光・家族訪問",
       nextQuestionId: q3.id
     });
 
     await this.createAnswerOption({
       questionId: q2.id,
-      text: "Study",
+      text: "勉学",
       nextQuestionId: q4.id
     });
 
     await this.createAnswerOption({
       questionId: q2.id,
-      text: "Work",
+      text: "就労",
       nextQuestionId: q3.id
     });
 
     await this.createAnswerOption({
       questionId: q2.id,
-      text: "Family Reunion",
+      text: "家族との同居",
       nextQuestionId: q5.id
     });
 
     await this.createAnswerOption({
       questionId: q3.id,
-      text: "Yes, full-time",
+      text: "はい、フルタイム",
       nextQuestionId: q5.id
     });
 
     await this.createAnswerOption({
       questionId: q3.id,
-      text: "Yes, part-time",
+      text: "はい、パートタイム",
       nextQuestionId: q5.id
     });
 
     await this.createAnswerOption({
       questionId: q3.id,
-      text: "No",
+      text: "いいえ",
       nextQuestionId: q5.id
     });
 
     await this.createAnswerOption({
       questionId: q4.id,
-      text: "Yes, in a university",
+      text: "はい、大学",
       nextQuestionId: q5.id
     });
 
     await this.createAnswerOption({
       questionId: q4.id,
-      text: "Yes, in a language school",
+      text: "はい、語学学校",
       nextQuestionId: q5.id
     });
 
     await this.createAnswerOption({
       questionId: q4.id,
-      text: "No",
+      text: "いいえ",
       nextQuestionId: q5.id
     });
 
     await this.createAnswerOption({
       questionId: q5.id,
-      text: "Under 18",
+      text: "18歳未満",
       nextQuestionId: null
     });
 
     await this.createAnswerOption({
       questionId: q5.id,
-      text: "18-30",
+      text: "18〜30歳",
       nextQuestionId: null
     });
 
     await this.createAnswerOption({
       questionId: q5.id,
-      text: "31-60",
+      text: "31〜60歳",
       nextQuestionId: null
     });
 
     await this.createAnswerOption({
       questionId: q5.id,
-      text: "Over 60",
+      text: "60歳以上",
       nextQuestionId: null
     });
   }

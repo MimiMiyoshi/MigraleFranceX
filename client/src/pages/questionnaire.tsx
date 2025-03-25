@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { SiteHeader } from "@/components/layouts/site-header";
 import { SiteFooter } from "@/components/layouts/site-footer";
 import { useAuth } from "@/hooks/use-auth";
@@ -7,7 +8,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Question, AnswerOption, VisaType } from "@shared/schema";
-import { useState } from "react";
 import { useLocation } from "wouter";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { Loader2, ArrowLeft, ArrowRight, CheckCircle, HelpCircle } from "lucide-react";
@@ -26,12 +26,14 @@ export default function Questionnaire() {
   const rootQuestionQuery = useQuery<Question>({
     queryKey: ["/api/questions/root"],
     enabled: currentQuestionId === null,
-    onSuccess: (data) => {
-      if (data) {
-        setCurrentQuestionId(data.id);
-      }
-    },
   });
+  
+  // React to root question data changes
+  React.useEffect(() => {
+    if (rootQuestionQuery.data) {
+      setCurrentQuestionId(rootQuestionQuery.data.id);
+    }
+  }, [rootQuestionQuery.data]);
   
   // Fetch the current question
   const currentQuestionQuery = useQuery<Question>({
